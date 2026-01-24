@@ -8,5 +8,3 @@ g++ -std=c++20 -fmodules-ts -c -x c++ helloworld.cppm
 
 # compile the application itself
 g++ -std=c++20 -fmodules-ts -o helloworld.app helloworld.cpp
-
-
