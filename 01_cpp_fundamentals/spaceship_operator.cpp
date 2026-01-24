@@ -24,9 +24,19 @@ int main()
   int i{ 11 };
   strong_ordering result{ i <=> 0 };
 
+  // Strong Ordering
+  cout << "### Strong Ordering ###\n";
   if (result == strong_ordering::less) cout << "i is less than 0\n";
   if (result == strong_ordering::greater) cout << "i is greater 0\n";
   if (result == strong_ordering::equal) cout << "i is equal with 0\n";
+
+  // Named Comparison Functions
+  cout << "### Named Comparison Functions ###\n";
+  if (is_lt(result)) cout << "less\n";
+  if (is_gt(result)) cout << "greater\n";
+  if (is_eq(result)) cout << "equal\n";
+
+  cout << "\n";
 
   float a{ 10.0f };
   float b{ 20.0f };
