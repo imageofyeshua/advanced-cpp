@@ -1,4 +1,4 @@
-import <iostream>;
+import <print>;
 using namespace std;
 
 int main()
@@ -8,15 +8,15 @@ int main()
   int i2{ int(myFloat) };                // method 2
   int i3{ static_cast<int>(myFloat) };   // method 3
   
-  cout << "myFloat: " << myFloat << endl;
-  cout << "(int)myFloat: " << i1 << endl;
-  cout << "int(myFloat): " << i2 << endl;
-  cout << "static_cast<int>(myFloat): " << i3 << endl;
+  println("myFloat: {}", myFloat);
+  println("(int)myFloat: {}", i1);
+  println("int(myFloat): {}", i2);
+  println("static_cast<int>(myFloat): {}", i3);
 
   short someShort{ 16 };
   long someLong{ someShort };          // no explicit cast needed
                                        //
-  cout << "someShort: " << someShort << endl;
-  cout << "someLong: " << someLong << endl;
+  println("someShort: {}", someShort);
+  println("someLong: {}", someLong);
 }
 

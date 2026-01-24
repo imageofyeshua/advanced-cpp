@@ -1,4 +1,4 @@
-import <iostream>;
+import <print>;
 import <utility>;
 import employee;
 using namespace std;
@@ -11,8 +11,8 @@ int main()
   anEmployee.employeeNumber = 42;
   anEmployee.salary = 8000;
 
-  cout << "Employee: " << anEmployee.firstInitial << anEmployee.lastInitial << endl;
-  cout << "Number: " << anEmployee.employeeNumber << endl;
-  cout << "Salary: " << anEmployee.salary << endl;
+  println("Employee: {}{}", anEmployee.firstInitial, anEmployee.lastInitial);
+  println("Number: {}", anEmployee.employeeNumber);
+  println("Salary: {}", anEmployee.salary);
 }
 
