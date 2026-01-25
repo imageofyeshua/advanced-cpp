@@ -1,6 +1,5 @@
-import <iostream>;
+import <print>;
 import airline_ticket;
-
 using namespace std;
 
 int main()
@@ -9,6 +8,6 @@ int main()
 	myTicket.setPassengerName("Sherman T. Socketwrench");
 	myTicket.setNumberOfMiles(700);
 	double cost{ myTicket.calculatePriceInDollars() };
-	cout << "This ticket will cost $" << cost << endl;
+	println("This ticket will cost ${}", cost);
 } 
 
