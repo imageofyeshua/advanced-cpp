@@ -13,9 +13,11 @@ void printVec(const vector<int>& arr)
 	println("");
 } 
 
-void separateOddsAndEvens(const vector<int>& arr,
-						  vector<int>& odds, vector<int>& evens)
+struct OddsAndEvens { vector<int> odds, evens; };
+
+OddsAndEvens separateOddsAndEvens(const vector<int>& arr)
 {
+	vector<int> odds, evens;
 	for (int i : arr) {
 		if (i % 2 == 0) {
 			evens.push_back(i);
@@ -23,16 +25,14 @@ void separateOddsAndEvens(const vector<int>& arr,
 			odds.push_back(i);
 		}
 	}
+	return OddsAndEvens{ .odds = odds, .evens = evens };
 }
 
 int main()
 {
 	vector<int> vecUnSplit{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -1, -2};
-	vector<int> odds, evens;
-
-	separateOddsAndEvens(vecUnSplit, odds, evens);
-
-	printVec(odds);
-	printVec(evens);
+	auto oddsAndEvens{ separateOddsAndEvens(vecUnSplit) };
+	printVec(oddsAndEvens.odds);
+	printVec(oddsAndEvens.evens);
 }
 
