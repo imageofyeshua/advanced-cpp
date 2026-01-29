@@ -30,9 +30,10 @@ int main()
     if (error1 == errc{}) { println("out buffer: {}", out); /* Conversion successful. */ }
 
     double value2;
-    auto [ptr2, error2] { to_chars(out.data(), out.data() + out.size(), value2) };
+    auto [ptr2, error2] { from_chars(out.data(), out.data() + out.size(), value2) };
     if (error2 == errc{}) {
       println("out buffer: {}", out);
+      println("value2: {}", value2);
       if (value1 == value2) {
         println("Perfect roundtrip");
       } else {
