@@ -1,5 +1,6 @@
 import <print>;
 import <string>;
+import <vector>;
 import <typeinfo>;
 
 using namespace std;
@@ -97,5 +98,11 @@ int main()
     println("string1: {}", typeid(string1).name());
     println("string2: {}", typeid(string2).name());
     println("string3: {}", typeid(string3).name());
+
+    vector names { "Daniel", "Jason", "Eunice" };
+    vector others { "Park"s, "Choi"s, "Lee"s };
+
+    println("names type: {}", typeid(names).name());
+    println("others type: {}", typeid(names).name());
   }
 }
