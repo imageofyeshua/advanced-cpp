@@ -1,6 +1,6 @@
 import <print>;
 import <string>;
-import employee;
+import Employee;
 
 using namespace std;
 using namespace Records;

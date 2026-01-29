@@ -1,6 +1,5 @@
-module database;
+module Database;
 
-import <string>;
 import <stdexcept>;
 
 using namespace std;
@@ -65,4 +64,3 @@ namespace Records {
 	}
 
 }
-

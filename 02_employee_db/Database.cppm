@@ -1,27 +1,28 @@
-export module database;
+export module Database;
 
-import <vector>;
 import <string>;
-import employee;
-
-using namespace std;
+import <vector>;
+import Employee;
 
 namespace Records {
-  const int FirstEmployeeNumber{ 1'000 };
+	const int FirstEmployeeNumber{ 1'000 };
 
-  export class Database
-  {
-    public:
-      Employee& addEmployee(const string& firstName, const string& lastName);
-      Employee& getEmployee(int employeeNumber);
-      Employee& getEmployee(const string& firstName, const string& lastName);
+	export class Database
+	{
+	public:
+		Employee& addEmployee(const std::string& firstName,
+							  const std::string& lastName);
+		Employee& getEmployee(int employeeNumber);
+		Employee& getEmployee(const std::string& firstName,
+							  const std::string& lastName);
 
-      void displayAll() const;
-      void displayCurrent() const;
-      void displayFormer() const;
+		void displayAll() const;
+		void displayCurrent() const;
+		void displayFormer() const;
 
-    private:
-      vector<Employee> m_employees;
-      int m_nextEmployeeNumber{ FirstEmployeeNumber };
-  };
+	private:
+		std::vector<Employee> m_employees;
+		int m_nextEmployeeNumber{ FirstEmployeeNumber };
+	};
 }
+
