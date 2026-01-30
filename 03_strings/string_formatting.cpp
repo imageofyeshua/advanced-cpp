@@ -29,4 +29,11 @@ int main()
 
   // C++23 std::println() + Unicode emojis
   println("😀");
+
+  int fish{ 153 };
+  string prayer{ "願人都尊祢的名為聖" };
+
+  println("Caught {} fish from {}", fish, "Galilee");
+  println("Caught {0} fish from {1}", fish, "Galilee");
+  println("我們在天上的父, {1}, 願祢的國降臨, {0}", "願祢的旨意行在地上", prayer);
 }
