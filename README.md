@@ -19,3 +19,9 @@ $ g++ -std=c++23 -fmodules-ts UserInterface.cpp \
        Employee_int.o Employee_impl.o \
        Database_int.o Database_impl.o \
        -o EmployeeApp
+
+## System Locale Setup
+
+$ sudo apt install -y locales
+$ sudo locale-gen en_US.UTF-8
+$ sudo update-locale LANG=en_US.UTF-8

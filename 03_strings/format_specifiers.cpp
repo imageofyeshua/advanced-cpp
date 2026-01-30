@@ -8,6 +8,7 @@ using namespace std;
 
 int main()
 {
+  locale::global(locale("C"));
   // width
   int i{ 153 };
   println("|{:7}", i);
@@ -74,7 +75,8 @@ int main()
   println("");
 
   float f{ 1.2f };
-  cout << format(locale{ "nl" }, "|{:Lg}|\n", f);
+  auto us = locale("en_US.UTF-8");
+  cout << format(us, "US: {:L}\n", f);
 
   println("");
 }

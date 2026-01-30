@@ -14,6 +14,7 @@ CORE_HEADERS=(
     "iostream"
     "fstream"
     "sstream"
+    "locale"
     "format"
     "ranges"
     "print"
@@ -39,6 +40,7 @@ CORE_HEADERS=(
     "set"
     "stack"
     "queue"
+    "typeinfo"
 )
 
 echo "--- Starting STL Module Cache Generation (GCC 14.2) ---"

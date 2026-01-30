@@ -14,6 +14,7 @@ CORE_HEADERS=(
     "iostream"
     "fstream"
     "sstream"
+    "locale"
     "format"
     "ranges"
     "print"
