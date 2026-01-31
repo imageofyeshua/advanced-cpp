@@ -5,8 +5,9 @@ import <string_view>;
 
 using namespace std;
 
-// The parameters are const references to avoid unnecessary copying.
-string replace(const string& haystack, const string& needle, const string& replacement)
+// The parameters are string_view to avoid unnecessary copying.
+// Note: string_view is passed by value, not by const reference.
+string replace(string_view haystack, string_view needle, string_view replacement)
 {
 	// Make a copy of the haystack.
 	string result{ haystack };
@@ -47,3 +48,4 @@ int main()
 	println("Replacement: {}", replacement);
 	println("Result: {}", result);
 }
+
