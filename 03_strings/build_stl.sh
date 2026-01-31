@@ -1,7 +1,29 @@
-#!/bin/bash
+#!/bin/zsh
 
-# Define the compiler and flags
-CXX="g++"
+# 1. Detect OS and Architecture
+OS_TYPE=$(uname -s)
+ARCH_TYPE=$(uname -m)
+
+if [[ "$OS_TYPE" == "Darwin" ]]; then
+    # Determine Homebrew path based on Mac Architecture
+    if [[ "$ARCH_TYPE" == "arm64" ]]; then
+        BREW_PREFIX="/opt/homebrew"
+    else
+        BREW_PREFIX="/usr/local"
+    fi
+    CXX="$BREW_PREFIX/gcc-14.2/bin/g++-14.2"
+elif [[ "$OS_TYPE" == "Linux" ]]; then
+    CXX="g++"
+fi
+
+# 2. Verify Compiler
+if ! command -v $CXX &> /dev/null; then
+    echo "Error: $CXX not found."
+    exit 1
+fi
+
+echo "Using Compiler: $CXX"
+
 FLAGS="-std=c++23 -fmodules-ts"
 
 # List of the most common/stable STL headers
