@@ -16,7 +16,7 @@ if [ $? -eq 0 ]; then
     # echo "Success! Interface files generated: $INF_OUTPUT_01 $INF_OUTPUT_01"
     echo "Building Project"
 
-    g++ -std=c++23 -fmodules-ts -o main.app main.cpp -lSDL3
+    g++ -std=c++23 -fmodules-ts -o main.app main.cpp -lSDL3 -lSDL3_image
 
     ./main.app
 else

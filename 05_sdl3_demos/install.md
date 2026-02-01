@@ -21,6 +21,11 @@ cd SDL_image
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 sudo cmake --build build --target install
 
+## Dynamic Linker Setup
+
+echo "/usr/local/lib" | sudo tee /etc/ld.so.conf.d/sdl3.conf
+sudo ldconfig -v | grep SDL3
+
 ## Compile System Header && Linking
 
 g++ -std=c++23 -fmodules-ts -x c++-system-header SDL3/SDL.h
