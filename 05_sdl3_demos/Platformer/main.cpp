@@ -1,5 +1,6 @@
 import <SDL3/SDL.h>;
 import <SDL3/SDL_main.h>;
+import <SDL3_image/SDL_image.h>;
 import <print>;
 
 using namespace std;
