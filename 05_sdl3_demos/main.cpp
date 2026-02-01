@@ -1,47 +1,42 @@
 import <SDL3/SDL.h>;
-import <iostream>;
-import <print>;
-
-using namespace std;
+import tetris_logic;
 
 int main(int argc, char* argv[]) {
-    // SDL3 returns true (1) on success, false (0) on failure
-    if (!SDL_Init(SDL_INIT_VIDEO)) {
-        println("SDL Init Error: {}", SDL_GetError());
-        return -1;
-    }
+    SDL_Init(SDL_INIT_VIDEO);
+    
+    SDL_Window* window = SDL_CreateWindow("C++23 Tetris", 300, 600, 0);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, nullptr);
 
-    // SDL3 window creation is slightly different from SDL2
-    SDL_Window* window = SDL_CreateWindow(
-        "C++23 Module Window", // Window title
-        800,                   // Width
-        600,                   // Height
-        SDL_WINDOW_RESIZABLE   // Flags
-    );
+    Tetris::GameBoard game;
+    bool quit = false;
+    SDL_Event e;
+    Uint64 lastTime = SDL_GetTicks();
 
-    if (!window) {
-        println("Window Creation Error: {}", SDL_GetError());
-        return -1;
-        SDL_Quit();
-        return -1;
-    }
-
-    // Main Loop
-    bool running = true;
-    SDL_Event event;
-
-    while (running) {
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_EVENT_QUIT) {
-                running = false;
+    while (!quit) {
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_EVENT_QUIT) quit = true;
+            if (e.type == SDL_EVENT_KEY_DOWN) {
+                if (e.key.key == SDLK_LEFT) game.move(-1, 0);
+                if (e.key.key == SDLK_RIGHT) game.move(1, 0);
+                if (e.key.key == SDLK_DOWN) game.move(0, 1);
             }
         }
+
+        // Automatic gravity every 500ms
+        if (SDL_GetTicks() - lastTime > 500) {
+            game.move(0, 1);
+            lastTime = SDL_GetTicks();
+        }
+
+        SDL_SetRenderDrawColor(renderer, 20, 20, 20, 255);
+        SDL_RenderClear(renderer);
         
-        // Just clear the screen to a nice color (Dark Gray)
-        // SDL3 uses a slightly updated rendering API, but for a 
-        // basic window, we can just poll events.
+        game.draw(renderer);
+        
+        SDL_RenderPresent(renderer);
     }
 
+    SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
     return 0;
