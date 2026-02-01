@@ -22,7 +22,16 @@ libpng-dev \
 libjpeg-dev \
 libwebp-dev \
 libtiff-dev \
-libavif-dev
+libavif-dev \
+libstd-dev \
+libflac-dev \
+libvorbis-dev \
+libopus-dev \
+libwavpack-dev \
+libgme-dev \
+libxmp-dev \
+libmodplug-dev \
+libfluidsynth-dev
 
 ## Check GUI
 
