@@ -1,37 +1,37 @@
-#!/bin/bash
+#!/bin/zsh
 
-# 1. Define variables
-INF_SOURCE_01="Employee.cppm"
-INF_SOURCE_02="Database.cppm"
-INF_OUTPUT_01="Employee_int.o"
-INF_OUTPUT_02="Database_int.o"
-IMPL_SOURCE_01="Employee.cpp"
-IMPL_SOURCE_02="Database.cpp"
-IMPL_OUTPUT_01="Employee_impl.o"
-IMPL_OUTPUT_02="Database_impl.o"
+# 1. Detect OS and Architecture
+OS_TYPE=$(uname -s)
+ARCH_TYPE=$(uname -m)
 
-echo "Starting the build process..."
-
-# 2. Compile the code
-# -o specifies the output filename
-g++ -std=c++23 -fmodules-ts -x c++ -c $INF_SOURCE_01 -o $INF_OUTPUT_01
-g++ -std=c++23 -fmodules-ts -x c++ -c $INF_SOURCE_02 -o $INF_OUTPUT_02
-g++ -std=c++23 -fmodules-ts -c $IMPL_SOURCE_01 -o $IMPL_OUTPUT_01 
-g++ -std=c++23 -fmodules-ts -c $IMPL_SOURCE_02 -o $IMPL_OUTPUT_02 
-
-# 3. Check if compilation succeeded
-if [ $? -eq 0 ]; then
-    echo "-------------------------------"
-    echo "Success! Interface files generated: $INF_OUTPUT_01 $INF_OUTPUT_02"
-    echo "Success! Implementation files generated: $IMPL_OUTPUT_01 $IMPL_OUTPUT_02"
-    echo "Building Project"
-
-    g++ -std=c++23 -fmodules-ts UserInterface.cpp \
-        Employee_int.o Employee_impl.o \
-        Database_int.o Database_impl.o \
-        -o Employee.app
-
-    ./Employee.app
-else
-    echo "Build failed. Please check your code."
+if [[ "$OS_TYPE" == "Darwin" ]]; then
+    # Determine Homebrew path based on Mac Architecture
+    if [[ "$ARCH_TYPE" == "arm64" ]]; then
+        BREW_PREFIX="/opt/homebrew"
+    else
+        BREW_PREFIX="/usr/local"
+    fi
+    CXX="$BREW_PREFIX/gcc-14.2/bin/g++-14.2"
+elif [[ "$OS_TYPE" == "Linux" ]]; then
+    CXX="g++"
 fi
+
+# 2. Verify Compiler
+if ! command -v $CXX &> /dev/null; then
+    echo "Error: $CXX not found."
+    exit 1
+fi
+
+echo "Using Compiler: $CXX"
+
+# 3. Define Headers
+headers=( memory chrono thread iomanip iostream fstream sstream locale format ranges random print string string_view vector stdexcept charconv utility algorithm numeric cmath map span optional variant unordered_map list forward_list deque array set stack queue typeinfo limits )
+
+# 4. Compile Header Units
+# IMPORTANT: No quotes around the flags. They must be separate arguments.
+for h in $headers; do
+    echo "Caching <$h>..."
+    $CXX -std=c++23 -fmodules-ts -x c++-system-header $h
+done
+
+echo "Successfully created gcm.cache for $OS_TYPE"
