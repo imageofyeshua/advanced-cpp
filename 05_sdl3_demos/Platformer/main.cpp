@@ -9,47 +9,27 @@ struct SDLState
 {
   SDL_Window *window;
   SDL_Renderer *renderer;
+  int width, height, logW, logH;
 };
 
+bool initialize(SDLState &state);
 void cleanup(SDLState &state);
 
 int main(int argc, char *argv[])
 {
   SDLState state;
 
+  state.width = 1600;
+  state.height = 900;
+  state.logW = 640;
+  state.logH = 320;
+
   println("### Platformer Game Project ###");
 
-  if (!SDL_Init(SDL_INIT_VIDEO))
+  if (!initialize(state))
   {
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Error Initializing SDL3", nullptr);
     return 1;
   }
-
-  // create th window
-  int width = 800;
-  int height = 600;
-  state.window = SDL_CreateWindow("SDL3 Demo", width, height, SDL_WINDOW_RESIZABLE);
-
-  if (!state.window)
-  {
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Error Creating Window", nullptr);
-    cleanup(state);
-    return 1;
-  }
-
-  // create the renderer
-  state.renderer = SDL_CreateRenderer(state.window, nullptr);
-  if (!state.renderer)
-  {
-    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Error Creating Renderer", state.window);
-    cleanup(state);
-    return 1;
-  }
-
-  // configure presentation
-  int logW = 640;
-  int logH = 320;
-  SDL_SetRenderLogicalPresentation(state.renderer, logW, logH, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 
   // load game assets
   SDL_Texture *idleTex = IMG_LoadTexture(state.renderer, "data/idle.png");
@@ -71,8 +51,8 @@ int main(int argc, char *argv[])
           } 
         case SDL_EVENT_WINDOW_RESIZED:
           {
-            width = event.window.data1;
-            height = event.window.data2;
+            state.width = event.window.data1;
+            state.height = event.window.data2;
             break;
           }
       } 
@@ -105,6 +85,44 @@ int main(int argc, char *argv[])
   SDL_DestroyTexture(idleTex);
   cleanup(state);
   return 0;
+}
+
+bool initialize(SDLState &state)
+{
+  bool initSuccess = true;
+
+  if (!SDL_Init(SDL_INIT_VIDEO))
+  {
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Error Initializing SDL3", nullptr);
+    initSuccess = false;
+  }
+
+  // create the window
+  int width = 800;
+  int height = 600;
+  state.window = SDL_CreateWindow("SDL3 Demo", state.width, state.height, SDL_WINDOW_RESIZABLE);
+
+  if (!state.window)
+  {
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Error Creating Window", nullptr);
+    cleanup(state);
+    initSuccess = false;
+  }
+
+  // create the renderer
+  state.renderer = SDL_CreateRenderer(state.window, nullptr);
+  if (!state.renderer)
+  {
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Error Creating Renderer", state.window);
+    cleanup(state);
+    initSuccess = false;
+  }
+
+  // configure presentation
+  int logW = 640;
+  int logH = 320;
+  SDL_SetRenderLogicalPresentation(state.renderer, state.logW, state.logH, SDL_LOGICAL_PRESENTATION_LETTERBOX);
+  return initSuccess;
 }
 
 void cleanup(SDLState &state)
