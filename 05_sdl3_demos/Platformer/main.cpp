@@ -19,8 +19,8 @@ int main(int argc, char *argv[])
 {
   SDLState state;
 
-  state.width = 1600;
-  state.height = 900;
+  state.width = 1200;
+  state.height = 600;
   state.logW = 640;
   state.logH = 320;
 

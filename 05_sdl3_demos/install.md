@@ -1,7 +1,33 @@
-## Install SDL3
+## Install Dependencies && SDL3
 
 sudo apt update && sudo apt upgrade -y
-sudo apt install build-essential cmake ninja-build libwayland-dev libx11-dev libxkbcommon-dev libegl1-mesa-dev libgles2-mesa-dev libdbus-1-dev libasound2-dev libpulse-dev libudev-dev libwayland-dev wayland-protocols libegl1-mesa-dev libgl1-mesa-dev x11-apps
+sudo apt install -y \
+build-essential \
+cmake \
+ninja-build \
+libwayland-dev \
+libx11-dev \
+xorg-dev \
+libxkbcommon-dev \
+libegl1-mesa-dev \
+libgles2-mesa-dev \
+libdbus-1-dev \
+libasound2-dev \
+libpulse-dev \
+libudev-dev \
+libgbm-dev \
+wayland-protocols \
+x11-apps \
+libpng-dev \
+libjpeg-dev \
+libwebp-dev \
+libtiff-dev \
+libavif-dev
+
+## Check GUI
+
+// if it says wayland or x11, the system is ready
+$ echo $XDG_SESSION_TYPE
 
 $ git clone https://github.com/libsdl-org/SDL.git
 $ cd SDL
@@ -12,9 +38,6 @@ $ echo $DISPLAY
 $ xclock
 
 ## Install SDL3_image
-
-sudo apt update
-sudo apt install libpng-dev libjpeg-dev libwebp-dev libtiff-dev libavif-dev
 
 git clone https://github.com/libsdl-org/SDL_image.git
 cd SDL_image
