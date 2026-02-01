@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
   float playerX = 150.0f;
   const float speed = 200.0f;
   const float floor = state.logH;
+  bool flipHorizontal = false;
   milliseconds previousTime{ SDL_GetTicks() };
 
   // start the game loop
@@ -75,10 +76,12 @@ int main(int argc, char *argv[])
     if (keys[SDL_SCANCODE_A])
     {
       playerX -= speed * dt;
+      flipHorizontal = true;
     }
     if (keys[SDL_SCANCODE_D])
     {
       playerX += speed * dt;
+      flipHorizontal = false;
     }
 
     static float timer = 0;
@@ -107,7 +110,8 @@ int main(int argc, char *argv[])
         .h = spriteSize
     };
 
-    SDL_RenderTexture(state.renderer, idleTex, &src, &dst);
+    SDL_RenderTextureRotated(state.renderer, idleTex, &src, &dst, 0, nullptr,
+        (flipHorizontal) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 
     // swap buffers and present
     SDL_RenderPresent(state.renderer);
