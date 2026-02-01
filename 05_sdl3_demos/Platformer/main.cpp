@@ -2,8 +2,10 @@ import <SDL3/SDL.h>;
 import <SDL3/SDL_main.h>;
 import <SDL3_image/SDL_image.h>;
 import <print>;
+import <chrono>;
 
 using namespace std;
+using namespace std::chrono;
 
 struct SDLState
 {
@@ -35,10 +37,21 @@ int main(int argc, char *argv[])
   SDL_Texture *idleTex = IMG_LoadTexture(state.renderer, "data/idle.png");
   SDL_SetTextureScaleMode(idleTex, SDL_SCALEMODE_NEAREST);
 
+  // setup game data
+  const bool *keys = SDL_GetKeyboardState(nullptr);
+  float playerX = 150.0f;
+  const float speed = 200.0f;
+  const float floor = state.logH;
+  milliseconds previousTime{ SDL_GetTicks() };
+
   // start the game loop
   bool running = true;
   while (running)
   {
+    milliseconds currentTime{ SDL_GetTicks() };
+    auto durationElapsed = currentTime - previousTime;
+    float dt = duration<float>(durationElapsed).count();
+
     SDL_Event event{ 0 };
     while (SDL_PollEvent(&event))
     {
@@ -58,28 +71,47 @@ int main(int argc, char *argv[])
       } 
     }
 
+    // handle movement
+    if (keys[SDL_SCANCODE_A])
+    {
+      playerX -= speed * dt;
+    }
+    if (keys[SDL_SCANCODE_D])
+    {
+      playerX += speed * dt;
+    }
+
+    static float timer = 0;
+    timer += dt;
+    if (timer > 1.0f) {
+      println("FPS: {:.1f} | Player X: {:.2f}", 1.0f / dt, playerX);
+      timer = 0;
+    }
+
     // perform drawing commands
     SDL_SetRenderDrawColor(state.renderer, 20, 10, 30, 255);
     SDL_RenderClear(state.renderer);
 
+    const float spriteSize = 32;
     SDL_FRect src{
       .x = 0,
         .y = 0,
-        .w = 32,
-        .h = 32
+        .w = spriteSize,
+        .h = spriteSize
     };
 
     SDL_FRect dst{
-      .x = 0,
-        .y = 0,
-        .w = 32,
-        .h = 32
+      .x = playerX,
+        .y = floor - spriteSize,
+        .w = spriteSize,
+        .h = spriteSize
     };
 
     SDL_RenderTexture(state.renderer, idleTex, &src, &dst);
 
     // swap buffers and present
     SDL_RenderPresent(state.renderer);
+    previousTime = currentTime;
   }
 
   SDL_DestroyTexture(idleTex);
