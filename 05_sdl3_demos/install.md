@@ -11,6 +11,16 @@ $ sudo cmake --build build --target install
 $ echo $DISPLAY
 $ xclock
 
+## Install SDL3_image
+
+sudo apt update
+sudo apt install libpng-dev libjpeg-dev libwebp-dev libtiff-dev libavif-dev
+
+git clone https://github.com/libsdl-org/SDL_image.git
+cd SDL_image
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+sudo cmake --build build --target install
+
 ## Compile System Header && Linking
 
 g++ -std=c++23 -fmodules-ts -x c++-system-header SDL3/SDL.h
