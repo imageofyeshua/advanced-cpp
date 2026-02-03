@@ -4,9 +4,9 @@ using namespace std;
 
 int main(){
 
-  constexpr int SOME_LIB_MAJOR_VERSION{ 1237 };
-  constexpr int eye_count{ 2 };
-  constexpr double PI{ 3.14 };
+  constexpr int SOME_LIB_MAJOR_VERSION {1237};
+  constexpr int eye_count {2};
+  constexpr double PI {3.14};
 
   // eye_count = 4;
 
@@ -17,10 +17,10 @@ int main(){
   // leg_count is not known at compile time
   // constexpr int arm_count{leg_count}; // Error 
 
-  constexpr int room_count{ 10 };
-  constexpr int door_count{ room_count }; // OK
-  const int table_count{ 5 };
-  constexpr int chair_count{ table_count * 5 }; // Works
+  constexpr int room_count {10};
+  constexpr int door_count {room_count}; // OK
+  const int table_count {5};
+  constexpr int chair_count {table_count * 5}; // Works
 
   // static_assert( SOME_LIB_MAJOR_VERSION == 123); // static assertion failed
 

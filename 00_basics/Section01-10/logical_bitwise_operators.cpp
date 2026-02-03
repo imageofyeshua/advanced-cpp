@@ -4,7 +4,6 @@ using namespace std;
 
 int main(){
 
-  int COLUMN_WIDTH {20};
   unsigned char value1 {0x3}; // 0000 0011
   unsigned char value2 {0x5}; // 0000 0101
 

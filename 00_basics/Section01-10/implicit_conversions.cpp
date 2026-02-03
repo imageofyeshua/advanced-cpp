@@ -13,7 +13,7 @@ int main(){
   //			transformed to double before the expression
   //			is evaluated.Unless we are doing an assignment
 
-  double price { 45.6 };
+  double price {45.6};
   int units {10};
 
   auto total_price = price * units; // units will be implicitly converted to double
@@ -26,7 +26,7 @@ int main(){
   // The assignment operation is going to cause an implicit
   // narrowing conversion , y is converted to int before assignment
   int x;
-  double y{ 45.44 };
+  double y {45.44};
   x = y; // double to int
   println("The value of x is : {}", x);
   println("Sizeof x : {} bytes", sizeof(x));

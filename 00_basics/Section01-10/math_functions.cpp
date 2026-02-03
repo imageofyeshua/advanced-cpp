@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
 
-	double weight { 7.7 };
+	double weight {7.7};
     
     //floor
     println("Weight rounded to floor is : {}", floor(weight));
@@ -14,7 +14,7 @@ int main(){
     println("Weight rounded to ceil is : {}", ceil(weight));
     
     //abs
-    double savings {-5000 };
+    double savings {-5000};
   
     println("Abs of weight is : {}", abs(weight));
     println("Abs of savings is : {}", abs(savings));

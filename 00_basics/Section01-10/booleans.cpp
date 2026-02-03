@@ -1,4 +1,3 @@
-import <iostream>;
 import <print>;
 
 using namespace std;
@@ -7,7 +6,7 @@ int main()
 {
 
   bool red_light {false};
-  bool green_light{true};
+  bool green_light {true};
 
   if(red_light == true){
     println("Stop! You Stupid...");

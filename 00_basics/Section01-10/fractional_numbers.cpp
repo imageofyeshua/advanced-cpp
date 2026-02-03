@@ -51,12 +51,12 @@ int main(){
     //Infinity and Nan
     println("Intifnity and NaN");
     
-    double number10{ -5.6 };
-    double number11{};//Initialized to 0
-    double number12{};  //Initialized to 0
+    double number10 {-5.6};
+    double number11 {};//Initialized to 0
+    double number12 {};  //Initialized to 0
 
     //Infinity
-    double result { number10 / number11 };
+    double result {number10 / number11};
     
     println("{} / {} = {} ", number10, number11, result);
     println("{} + {} = {}", result, number10, result + number10);

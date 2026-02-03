@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
 
-    unsigned short int data{ 15 };
+    unsigned short int data {15};
 
     // Displaying various bases
     // {:d} = decimal (default)

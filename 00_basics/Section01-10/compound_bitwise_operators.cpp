@@ -5,7 +5,7 @@ using namespace std;
 int main(){
   println("Compount Bitwise Assignment Operators");
 
-  unsigned char sandbox_var{0b00110100}; // 8 bits : positive numbers only
+  unsigned char sandbox_var {0b00110100}; // 8 bits : positive numbers only
 
   println("");
 

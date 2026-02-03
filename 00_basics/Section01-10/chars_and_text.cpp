@@ -1,4 +1,3 @@
-import <iostream>;
 import <print>;
 
 using namespace std;

@@ -3,9 +3,6 @@ import <print>;
 using namespace std;
 
 int main(){
-
-  const int COLUMN_WIDTH {20};
-
   // Highlight position for bit of interest with a 1
   // Mask other positions with 0
 

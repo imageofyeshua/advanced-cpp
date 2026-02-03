@@ -7,8 +7,8 @@ int main(){
 
   // Implicit cast will add up the doubles,
   // then turn result into int for assignment
-  double x { 12.5 };
-  double y { 34.6};
+  double x {12.5};
+  double y {34.6};
 
   int sum = x + y; 
 
@@ -23,7 +23,7 @@ int main(){
   println("Sum up then cast, result : {}", sum);
 
   // Old style C-cast
-  double PI{ 3.14 };
+  double PI {3.14};
 
   // int int_pi = (int)(PI);
   int int_pi = static_cast<int>(PI);
