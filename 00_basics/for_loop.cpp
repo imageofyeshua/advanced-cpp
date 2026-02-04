@@ -22,5 +22,10 @@ int main(){
     println("i: {}, x: {}, y : {}", i, x, y);
   }
 
+  // for loop with init condition
+  for(double multiplier{4}; auto i : {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}) {
+    println("result: {}", i * multiplier);
+  }
+
   return 0;
 }
