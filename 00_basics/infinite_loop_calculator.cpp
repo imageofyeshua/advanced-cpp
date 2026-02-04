@@ -20,6 +20,14 @@ int main(){
     print("Your operation : ");
     cin >> operation;
 
+    if( (operation != '+') &&  
+        (operation != '-') &&
+        (operation != '*') &&
+        (operation != '/')){
+      println("{} operation NOT SUPPORTED!", operation);
+      continue;
+    }
+
     println("");
 
     println("Please type in your two operands separated by a space and hit enter: ");
@@ -53,12 +61,12 @@ int main(){
     end = ((go_on == 'Y') || (go_on == 'y')) ? false : true;
 
     /*
-    if ((go_on == 'Y') || (go_on == 'y')){
-      end = false;
-    } else {
-      end = true;
-    }
-    */
+       if ((go_on == 'Y') || (go_on == 'y')){
+       end = false;
+       } else {
+       end = true;
+       }
+       */
   }
 
   println("Done helping out. BYE!");
