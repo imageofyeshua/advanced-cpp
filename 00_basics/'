@@ -1,0 +1,86 @@
+import <iostream>;
+import <print>;
+
+using namespace std;
+
+int main(){
+
+
+  println("Incrementing for loop : ");
+  for (size_t i{0}; i < 5; ++i){
+    println("i : {}", i);
+  }
+
+  println("");
+
+  println("Decrementing for loop : ");
+
+  for(size_t i{5}; i > 0; --i){
+    println("i : {}", i);
+  }
+
+  //Range based for loops can't be made to run in reverse order
+
+
+  //While loop
+  /*
+  //Incrementing while
+  std::cout << std::endl;
+  std::cout << "Incrementing while" << std::endl;
+
+  size_t i{0};
+
+  while( i < COUNT){
+  std::cout << "i : " << i << std::endl;
+  ++i;
+  }
+
+  //Decrementing while
+  std::cout << std::endl;
+  std::cout << "Decrementing while : " << std::endl;
+  i = COUNT;
+
+  while( i > 0){
+  std::cout << "i : " << i << std::endl;
+  --i;
+  }
+  */
+
+  //Do while loop
+  /*
+  //Incrementing do while
+  std::cout << std::endl;
+  std::cout << "Incrementing do while" << std::endl;
+  size_t i = 0;
+
+  do {
+  std::cout << "i : " << i << std::endl;
+  ++i;
+
+  }while ( i < COUNT);
+
+
+  //Decrementing do while
+  std::cout << std::endl;
+  std::cout << "Decrementing do while" << std::endl;
+  i = COUNT;
+
+  do {
+  std::cout << "i : " << i << std::endl;
+  --i;
+  }while ( i > 0);
+  */
+
+
+  //Infinite loop
+  //Decrementing do while
+  println("Decrementing do while : ");
+  unsigned int i {5};
+
+  do {
+    std::cout << "i : " << i << std::endl;
+    --i;
+  }while ( i >= 0);
+
+  return 0;
+}
