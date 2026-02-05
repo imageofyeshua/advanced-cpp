@@ -25,7 +25,7 @@ fi
 echo "Using Compiler: $CXX"
 
 # 3. Define Headers
-headers=( memory chrono thread iomanip iostream fstream sstream locale format ranges random print string string_view vector stdexcept charconv utility algorithm numeric cmath map span optional variant unordered_map list forward_list deque array set stack queue typeinfo limits numbers )
+headers=( memory chrono thread iomanip iostream fstream sstream locale format ranges random print string string_view vector stdexcept charconv utility algorithm numeric cmath map span optional variant unordered_map list forward_list deque array set stack queue typeinfo limits numbers ctime cstdlib )
 
 # 4. Compile Header Units
 # IMPORTANT: No quotes around the flags. They must be separate arguments.
