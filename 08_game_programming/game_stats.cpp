@@ -34,5 +34,12 @@ int main()
   score = aliensKilled * ALIEN_POINTS;
   println("score: {}", score);
 
+  enum difficulty {NOVICE, EASY, NORMAL, HARD, UNBEATABLE};
+  difficulty myDifficulty = EASY;
+
+  enum shipCost {FIGHTER_COST = 25, BOMBER_COST, CRUISER_COST = 50};
+  shipCost myShipCost = BOMBER_COST;
+  println("To upgrade my ship to a Cruiser will cost : {} Resource Points.\n", (CRUISER_COST - myShipCost));
+
   return 0;
 }
