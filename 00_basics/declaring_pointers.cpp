@@ -64,5 +64,15 @@ int main(){
 
   println("value : {}", *p_int2);
 
+  const char* message {"Hello, Daniel!"};
+  println("message: {}", message);
+
+  // Prints out first char of the message
+  println("message(pointer address): {}", *message);
+
+  char message1[] {"Hello, Jason!"};
+  message1[0] = 'T';
+  println("message1 {}", message1);
+
   return 0;
 }
