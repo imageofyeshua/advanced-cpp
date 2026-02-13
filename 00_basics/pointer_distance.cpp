@@ -28,5 +28,30 @@ int main()
 
   println("sizeof(std::ptrdiff_t) : {}", sizeof(ptrdiff_t));
 
+  println("### Finding Nemo Demo ###");
+
+  // Finding Nemo
+  int data[] {11, 2, 52, 9, 13, 7, 12, 100};
+
+  int* min_address {&data[0]};
+  int* max_address {&data[0]};
+
+  for(size_t i{0}; i < size(data) - 1; ++i)
+  {
+    if (*min_address > data[i+1]) {
+      min_address = &data[i+1];
+    } else if(*max_address < data[i+1]) {
+      max_address = &data[i+1];
+    }
+    println("min_address value: {}, data[{}] value: {}", *min_address, i, data[i+1]);
+    println("max_address value: {}, data[{}] value: {}", *max_address, i, data[i+1]);
+  }
+
+  println("The first array address is : {}", static_cast<void*>(&data[0]));
+  println("The minimum number address is : {}", static_cast<void*>(min_address));
+  println("The maximum number address is : {}", static_cast<void*>(max_address));
+  println("The distance between the first array and the minimum is : {}", min_address - &data[0]);
+  println("The distance between the first array and the maximum is : {}", max_address - &data[0]);
+
   return 0;
 }
