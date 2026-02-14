@@ -12,14 +12,16 @@ int main(){
   // Print arr0
   println("arr0 : ");
   for (size_t i{}; i < size(arr0); ++i) {
-    print("{} ", p_arr0[i]);
+    // print("{} ", p_arr0[i]);
+    print("{} ", *(p_arr0 + i));
   }
   println("");
 
   // Print arr1
   println("arr1 : ");
   for (size_t i{}; i < size(arr1); ++i) {
-    print("{} ", p_arr1[i]);
+    // print("{} ", p_arr1[i]);
+    print("{} ", *(p_arr1 + i));
   }
   println("");
 
@@ -59,14 +61,16 @@ int main(){
   // Print arr0
   println("arr0 : ");
   for (size_t i{}; i < size(arr0); ++i) {
-    print("{} ", p_arr0[i]);
+    // print("{} ", p_arr0[i]);
+    print("{} ", *(p_arr0 + i));
   }
   println("");
 
   // Print arr1
   println("arr1 : ");
   for (size_t i{}; i < size(arr1); ++i) {
-    print("{} ", p_arr1[i]);
+    // print("{} ", p_arr1[i]);
+    print("{} ", *(p_arr1 + i));
   }
   println("");
 
