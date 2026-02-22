@@ -1,0 +1,11 @@
+CompileFlags:
+  Add: [
+    "-std=c++23",
+    "-fmodules-ts",
+    "-fprebuilt-module-path=gcm.cache", # GCC 14.2 module output
+    "-fmodule-mapper=module.map"        # Optional: helpful for complex imports
+  ]
+  Remove: ["-std=*", "-xc++-header"]
+
+Index:
+  Background: Skip                     # ONLY suggest what is in the current context/cache
