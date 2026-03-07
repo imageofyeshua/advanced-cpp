@@ -20,7 +20,7 @@ if [ $? -eq 0 ]; then
         MathUtils.o \
         -o play.app
 
-    ./play.app
+    ./play.app Daniel
 else
     echo "Build failed. Please check your code."
 fi
