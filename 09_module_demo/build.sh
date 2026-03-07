@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # 1. Define variables
 INF_SOURCE_01="MathUtils.cppm"
