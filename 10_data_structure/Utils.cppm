@@ -1,4 +1,4 @@
-export module MathUtils;
+export module Utils;
 
 export int add(int a, int b) {
   return a + b;

@@ -1,4 +1,4 @@
-import MathUtils;
+import Utils;
 import <print>;
 import <iostream>;
 import <string>;

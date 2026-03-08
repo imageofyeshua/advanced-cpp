@@ -1,8 +1,8 @@
 #!/bin/zsh
 
 # 1. Define variables
-INF_SOURCE_01="MathUtils.cppm"
-INF_OUTPUT_01="MathUtils.o"
+INF_SOURCE_01="Utils.cppm"
+INF_OUTPUT_01="Utils.o"
 INF_SOURCE_02="Person.cppm"
 INF_OUTPUT_02="Person.o"
 
@@ -21,7 +21,7 @@ if [ $? -eq 0 ]; then
     echo "Building Project"
 
     g++ -std=c++23 -fmodules-ts main.cpp \
-        MathUtils.o \
+        Utils.o \
         Person.o \
         -o play.app
 
