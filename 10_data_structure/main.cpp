@@ -20,5 +20,12 @@ int main(int argc, char *argv[])
   // ptr2 = &b; // compile error
   println("*ptr: {}", *ptr);
 
+  swap(a, b);
+
+  println("[main] after swap, a: {}, b: {}", a, b);
+
+  increment(b);
+  println("Updated value b: {}", b);
+
   return 0;
 }
