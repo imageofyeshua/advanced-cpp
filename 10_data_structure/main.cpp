@@ -7,25 +7,59 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-  int a = 3;
-  int b = 5;
-  const int *ptr = &a;
-  int *const ptr2 = &a; // const pointer
+  // exception
+  try {
+    int input;
+    print("Enter an integer: ");
+    cin >> input;
 
-  println("a: {}", a);
-  println("*ptr: {}", *ptr);
 
-  a = 7;
-  // *ptr = 9; // compile error
-  // ptr2 = &b; // compile error
-  println("*ptr: {}", *ptr);
+    if (input > 0)
+    {
+      println("throw 1");
+      throw 1; // exception 1(integer type)
+      println("after throw 1");
+    }
 
-  swap(a, b);
+    if (input < 0)
+    {
+      println("throw -1.0f");
+      throw -1.0f; // exception 1.0f(float type)
+      println("after throw -1.0f");
+    }
 
-  println("[main] after swap, a: {}, b: {}", a, b);
+    if (input == 0)
+    {
+      println("throw Z");
+      throw 'Z'; // exception 1(integer type)
+      println("after throw Z");
+    }
+  }
+  catch (int a)
+  {
+    println("catch {}", a);
+  }
+  catch (float b)
+  {
+    println("catch {}", b);
+  }
+  catch (char c)
+  {
+    println("catch {}", c);
+  }
+  catch (...)
+  {
+    println("catch the rest...");
+  }
 
-  increment(b);
-  println("Updated value b: {}", b);
+  try 
+  {
+    func_throw();
+  }
+  catch (int exec) 
+  {
+    println("catch {}", exec);
+  }
 
   return 0;
 }

@@ -43,3 +43,11 @@ export void increment(int &num)
 {
   num++;
 }
+
+export void func_throw()
+{
+  println("func_throw()");
+  println("throw -1");
+  throw -1;
+  println("after throw -1");
+}
