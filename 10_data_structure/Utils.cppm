@@ -1,6 +1,7 @@
 export module Utils;
 
 import <print>;
+import <cassert>;
 using namespace std;
 
 export int add(int a, int b) {
@@ -50,4 +51,10 @@ export void func_throw()
   println("throw -1");
   throw -1;
   println("after throw -1");
+}
+
+export void print_number(int *pt_int)
+{
+  assert(pt_int != NULL);
+  println("{}", *pt_int);
 }
