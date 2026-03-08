@@ -7,6 +7,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+  /*
   int customer_num = 0;
 
   println("Guest Number: ");
@@ -27,6 +28,19 @@ int main(int argc, char *argv[])
   }
 
   delete[] bread;
+  */
+
+  int a {3}, b {-3};
+
+  println("a: {}, b: {}", a, b);
+
+  change_negative(&a);
+  change_negative(&b);
+
+  println("a: {}, b: {}", a, b);
+
+  int scores[5] {90, 56, 100, 65, 80};
+  println("Average: {}", average(scores, 5)); // *scores also works
 
   return 0;
 }
