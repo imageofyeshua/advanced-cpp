@@ -19,3 +19,8 @@ export int average(int array[], int count) {
   return (sum / count);
 }
 
+export int getNEWID()
+{
+  static int ID {0};
+  return ++ID;
+}
