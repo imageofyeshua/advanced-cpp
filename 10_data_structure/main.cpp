@@ -45,5 +45,19 @@ int main(int argc, char *argv[])
   println("dynamic memory value after delete: {}", *pt_int_value);
   println("pt_int_value after delete: {}", static_cast<void*>(pt_int_value));
 
+  // dynamic memory allocation in array
+  int *pt_int_array_value = new int[5];
+
+  for (int i = 0; i < 5; i++)
+  {
+    pt_int_array_value[i] = i;
+  }
+
+  for (int i = 0; i < 5; i++)
+  {
+    print("[{}]", pt_int_array_value[i]);
+  }
+  println("");
+
   return 0;
 }
